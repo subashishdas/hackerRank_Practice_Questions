@@ -48,3 +48,5 @@ public class twoCharacters {
         System.out.println(res);
     }
 }
+
+
