@@ -23,6 +23,8 @@ public class separateTheNumber {
         System.out.println("No");
     }
     public static void main(String[] args) {
+        String s = "123124125";
 
+      separateNumber(s);
     }
 }
