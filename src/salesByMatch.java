@@ -1,31 +1,24 @@
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
+import java.util.Map;
 
 public class salesByMatch {
     public static int sockMerchant(int n, List<Integer> arr) {
-        // Convert the immutable list to a mutable ArrayList
-        List<Integer> mutableList = new ArrayList<>(arr);
+       Map<Integer,Integer> sockCount = new HashMap<>();
 
-        Collections.sort(mutableList);  // Sort the mutable list
+       for(int sock : arr){
+           sockCount.put(sock,sockCount.getOrDefault(sock,0) + 1);
+       }
+       int pair = 0;
 
-        int count = 1;
-        int pair = 0;
-
-        for (int i = 0; i < n - 1; i++) {
-            if (Objects.equals(mutableList.get(i), mutableList.get(i + 1))) {
-                count++;
-            } else {
-                pair = pair + (count / 2);
-                count = 1;
-            }
-        }
+       for(int count : sockCount.values()){
+           pair += count / 2;
+       }
         return pair;
     }
 
     public static void main(String[] args) {
-        List<Integer> arr = List.of(10, 20, 20, 10, 10, 30, 50, 10, 20);
+        List<Integer> arr = List.of(1, 1, 3, 1, 2, 1, 3, 3, 3, 3);
         int n = arr.size();
         int res = sockMerchant(n, arr);
         System.out.println(res);
